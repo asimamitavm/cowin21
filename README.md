@@ -1,4 +1,4 @@
-The basic code is based on Django, Sqlite and python with little bit of SQL.
+The basic code is based on Django, Sqlite, HTML and python with little bit of SQL.
 
 It allows users to submit a request to get notified about the future vaccine slots by providing the Pincode or the district name.
 User gets a list of vaccine slots available in the 7 days.
