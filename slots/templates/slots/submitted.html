@@ -1,0 +1,17 @@
+{% extends "slots/layout.html" %}
+
+{% block body %}
+<h4> Thanks for Submitting the request.</h4>
+<p>   Things to note.. </p>
+<dl>
+  <dt>Verification email</dt>
+  <dd>- Please click on the verification link sent to your mail from AWS to verifiy the email-ID.</dd>
+  <dt>Slots details email </dt>
+  <dd>- Once slots get available , you will be notified with the details of vaccination center and slots timing on the provided email in the request. </dd>
+  <dt>Reserve the slot on Cowin portal </dt>
+  <dd>- Login and book the slot as per your convinience at <a href="https://www.cowin.gov.in/home">cowin.gov.in</a>.</dd>
+  <dt>Could not book/Want to submit another request ? </dt>
+  <dd>- In case you could not reserve the slots or want to submit another request,click <a href="{% url 'pinreq' %}">here.</a>
+</dd>
+</dl>    
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "slots/layout.html" %}
+
+{% block body %}
+<h4> Hey there!..</h4>
+<br>
+<h4>Submit below form to get notified about next available vaccine slot(s) for C19 in your area. </h4>
+<ul>
+	<li> The Date you submit here is the eraliest date  you want to be vaccinated. System will check upto 7 days from the submitted date to find slot(s) for you.</li>   
+<li> After you submit, Please verify the email by following the verification link which will be sent within 15 mins.</li>
+</ul>
+<hr>
+<p> Choose the type of form:- 
+    <a style='color: green;' href="{% url 'distreq' %}">Slots by District</a> OR 
+    <a href="{% url 'pinreq' %}">Slots by Pincode</a>
+    <br>
+</p>
+<form id="RequestForm" method="post" data-districts-url="{% url 'ajax_load_districts' %}" novalidate>
+    </table>
+        {% csrf_token %}
+        {{ form.as_p}}
+     <input type="submit">
+    </table>
+</form>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_state").change(function () {
+      const url = $("#RequestForm").attr("data-districts-url");  // get the url of the `load_cities` view
+      const stateId = $(this).val();  // get the selected country ID from the HTML input
+
+      $.ajax({                       // initialize an AJAX request
+        url: url,                    // set the url of the request (=0.0.0.0:8000/slots/ajax/load-districts/)
+        data: {
+          'state':  stateId     // add the state id to the GET parameters
+        },
+        success: function (data) {   // `data` is the return of the `load_districts` view function
+          $("#id_district").html(data);
+        }
+      });
+
+    });
+</script>
+{% endblock %}
